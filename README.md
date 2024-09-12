@@ -1,64 +1,33 @@
-# testing_app
+# Flutter Web Crypto UI with Scrolling Pure Animations
 
-A Sample app that shows different types of testing in Flutter.
+## Introduction
+Welcome to my Flutter web project featuring a Crypto UI with scrolling pure animations. In this project, I've implemented various animations such as fade, cross fade, position, slide transition, and more, to enhance the user experience while navigating the website.
 
-This particular sample uses the [Provider][] package but any other state management approach
-would do.
+## Project Overview
+This Flutter web application is designed to provide users with a sleek and interactive interface for exploring cryptocurrency data. Users can scroll through the website to view different sections and enjoy smooth animations as they navigate through the content.
 
-[provider]: https://pub.dev/packages/provider
+## Technologies Used
+- Flutter
+- Dart
+- HTML
+- CSS
 
-## Goals for this sample
+## Features
+- Crypto UI: Displays cryptocurrency data in a visually appealing manner.
+- Smooth Scrolling: Utilizes pure animations for seamless navigation.
+- Fade Animation: Elements fade in and out smoothly during transitions.
+- Cross Fade Animation: Smooth transition between different elements.
+- Position Animation: Elements move smoothly to their designated positions.
+- Slide Transition: Slides content in and out of view during navigation.
+## Video Demo
+you can view a demo of the project on my [LinkedIn post](https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7174017295793549312).
 
-Show how to perform:
+## GitHub Repository
+You can find the source code for this project on [GitHub](https://github.com/Amirmahdi1380).
 
-- Widget Testing,
-- Integration Testing,
-- Performance Testing, and
-- State Management Testing using the [Provider][] package.
+## LinkedIn Profile
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/amirmahdi-nourkazemi-04613023a/) to learn more about my projects and experiences.
 
-## How to run tests
-- Navigate to the project's root folder using command line and follow the instructions below.
+## Link Tree
+Explore more of my work and social profiles on [Link Tree](https://linktr.ee/Amirmahdi_Nourkazemi).
 
-### To run tests using only the Flutter SDK:
-The Flutter SDK can run unit tests and widget tests in a virtual machine, without the need of a physical device or emulator.
-- To run all the test files in the `test/` directory in one go, run `flutter test`.
-- To run a particular test file, run `flutter test test/<file_path>`
-
-### To run tests on a physical device/emulator:
-- Widget Tests:
-  - Run `flutter run test/<file_path>`
-- Integration Tests:
-  - Run `flutter test integration_test` to run all the integration tests with a single command.
-  - Alternatively, you can run `flutter drive --driver=integration_test/driver.dart --target=integration_test/app_test.dart` to run them separately. You can also provide custom driver files with this command.
-- Performance Tests:
-  - Run `flutter drive --driver=integration_test/perf_driver.dart --target=integration_test/perf_test.dart --profile --trace-startup`
-    - Using a physical device and running performance tests in profile mode is recommended.
-    - The `--trace-startup` option is used to avoid flushing older timeline events when the timeline gets long.
-- State Management Tests:
-  - For testing state using Flutter Integration Tests
-    - Run `flutter drive --driver=integration_test/driver.dart --target=integration_test/state_mgmt_test.dart`
-    
-### To generate test coverage report:
-- Install the `lcov` tool:
-  - For MacOS, run `brew install lcov`
-  - For Linux, run `sudo apt install lcov`
-- Run tests with coverage:
-  - `flutter test --coverage`
-- Convert `lcov.info` into readable html:
-  - Run `genhtml coverage/lcov.info -o coverage/index`
-- Open `coverage/index/index.html` in your preferred browser.
-    
-### CI/CD
-- Refer [.github](../.github) and the [tool](../tool) directory to see how to test Flutter projects using GitHub Actions.
-
-Note that tools like GitHub Actions can't run tests on a physical device, which is required to run integration tests. Instead, you can use [Firebase Test Lab](https://firebase.google.com/docs/test-lab), [Codemagic](https://docs.codemagic.io/testing/aws/) or any platform of your choice to do that.
-
-## Questions/issues
-
-If you have a general question about testing in Flutter, the best places to go are:
-
-- [Flutter documentation](https://flutter.dev/)
-- [StackOverflow](https://stackoverflow.com/questions/tagged/flutter)
-
-If you run into an issue with the sample itself, please
-[file an issue](https://github.com/flutter/samples/issues).
