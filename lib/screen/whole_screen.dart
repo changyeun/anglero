@@ -4,6 +4,8 @@ import 'package:crypto_ui_web/screen/sections/forth_section.dart';
 import 'package:crypto_ui_web/screen/sections/ninth_section.dart';
 import 'package:crypto_ui_web/screen/sections/second_section.dart';
 import 'package:crypto_ui_web/screen/sections/seventh_section.dart';
+import 'package:crypto_ui_web/screen/sections/third1_section.dart';
+import 'package:crypto_ui_web/screen/sections/third2_section.dart';
 import 'package:crypto_ui_web/screen/sections/third_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,31 +41,18 @@ class _WholeScreenState extends State<WholeScreen> {
       controller: controller,
       children: const [
         FirstSection(),
-        SecondScreen(),
+        // SecondScreen(),
         ThirdSection(),
-        SizedBox(
-          height: 100.0,
-        ),
+        Third1Section(),
+        Third2Section(),
         ForthSection(),
         SizedBox(
           height: 50.0,
         ),
         FifthSection(),
-        SizedBox(
-          height: 50.0,
-        ),
-        SeventhSection(),
-        SizedBox(
-          height: 100.0,
-        ),
-        EighthSection(),
-        SizedBox(
-          height: 100.0,
-        ),
         SixthSection(),
-        SizedBox(
-          height: 100.0,
-        ),
+        SeventhSection(),
+        EighthSection(),
         NinthSection(),
       ],
     );

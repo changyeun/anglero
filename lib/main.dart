@@ -1,6 +1,7 @@
 import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
 import 'package:crypto_ui_web/screen/whole_screen.dart';
+import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,12 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
         leadingWidth: 420,
-        backgroundColor: AppColors.scaffoldColor,
+        backgroundColor: AngleroColor.appbarColor,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10, top: 21, bottom: 21),
           child: SizedBox(
-            height: 200,
+            height: 57,
             child: Image.asset(
               'assets/images/Frame 19.png',
               fit: BoxFit.contain,
@@ -50,71 +52,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         actions: [
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Home',
-              style: TextStyle(
-                  fontFamily: 'CH',
-                  fontSize: 14,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500),
-            ),
-          ),
-          TextButton(
-              onPressed: () {},
-              child: const Text(
-                'About',
-                style: TextStyle(
-                    fontFamily: 'CH',
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              )),
-          TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Services',
-                style: TextStyle(
-                    fontFamily: 'CH',
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              )),
-          TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Price',
-                style: TextStyle(
-                    fontFamily: 'CH',
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              )),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'News',
-              style: TextStyle(
-                  fontFamily: 'CH',
-                  fontSize: 14,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.only(right: 70),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.scaffoldColor,
-                  side: const BorderSide(color: AppColors.secondaryColor)),
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11.5),
+              decoration: BoxDecoration(
+                color: AngleroColor.red_200,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: const Text(
-                'Get started',
+                'Stock 바로가기',
                 style: TextStyle(
                     fontSize: 14,
-                    color: AppColors.secondaryColor,
-                    fontFamily: 'CH',
+                    color: AngleroColor.white,
+                    height: 1,
                     fontWeight: FontWeight.w500),
               ),
             ),

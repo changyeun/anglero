@@ -1,9 +1,11 @@
+import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
+import 'package:crypto_ui_web/screen/widget/item_card.dart';
 import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
+import 'package:crypto_ui_web/share/anglero_design.dart';
+import 'package:crypto_ui_web/share/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/screen_offset.dart';
 
 class SeventhSection extends StatefulWidget {
   const SeventhSection({super.key});
@@ -12,15 +14,13 @@ class SeventhSection extends StatefulWidget {
   State<SeventhSection> createState() => _SeventhSectionState();
 }
 
-class _SeventhSectionState extends State<SeventhSection>
-    with SingleTickerProviderStateMixin {
+class _SeventhSectionState extends State<SeventhSection> with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<double> imageRevealAnimation;
-  late Animation<double> textRevealAnimation;
-  late Animation<double> subTextOpacityAnimation;
-  late Animation<double> subImageRevealAnimation;
-  late Animation<Offset> offsetImage;
-  late Animation<Offset> transform;
+
+  late Animation<double> headingTextOpacity;
+  late Animation<double> subTextOpacity;
+  late Animation<double> descriptionOpacity;
+  late Animation<double> planAnimation;
 
   @override
   void initState() {
@@ -34,32 +34,12 @@ class _SeventhSectionState extends State<SeventhSection>
       ),
     );
 
-    imageRevealAnimation = Tween<double>(begin: 500.0, end: 0.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.0, 0.40, curve: Curves.easeOut)));
+    headingTextOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.3, 0.5, curve: Curves.easeOut)));
 
-    textRevealAnimation = Tween<double>(begin: 70.0, end: 0.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
+    subTextOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.4, 0.6, curve: Curves.easeOut)));
 
-    subTextOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.50, 0.80, curve: Curves.easeOut)));
-    offsetImage =
-        Tween<Offset>(begin: const Offset(-1, 0), end: const Offset(0, 0))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
-    transform =
-        Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
-
-    subImageRevealAnimation = Tween<double>(begin: 0.0, end: 90.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.70, 1.0, curve: Curves.easeOut)));
-
+    descriptionOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.6, 0.8, curve: Curves.easeOut)));
+    planAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     super.initState();
   }
 
@@ -74,165 +54,253 @@ class _SeventhSectionState extends State<SeventhSection>
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 3400 &&
-                current.scrollOffsetValue < 4000) ||
-            controller.isAnimating) {
+        if (current.scrollOffsetValue > 4200 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 3550 &&
-            state.scrollOffsetValue <= 4200) {
+        if (state.scrollOffsetValue > 4200) {
           controller.forward();
         } else {
-          controller.reverse();
+          // controller.reverse();
         }
-        return AnimatedBuilder(
-          animation: textRevealAnimation,
-          builder: (context, child) {
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 350,
-                  decoration: const BoxDecoration(
-                    color: AppColors.secondaryColor,
+        return Container(
+          color: AngleroColor.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 150),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FadeTransition(
+                      opacity: headingTextOpacity,
+                      child: const Text(
+                        'Be Anglero’s Partner',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: AngleroColor.black, fontSize: 44, fontWeight: FontWeight.w700, height: 1),
+                      ),
                   ),
-                ),
-                Positioned(
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextReveal(
-                          controller: controller,
-                          maxHeight: 80,
-                          child: const Text(
-                            'Start Your Crypto Odyssey With Us',
-                            style: TextStyle(
-                              fontFamily: 'CH',
-                              color: Color(0xff2A2A2A),
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextReveal(
-                          maxHeight: 100,
-                          controller: controller,
-                          child: const Text(
-                            'Lorem ipsum dolor sit amet consectetur. Duis morbi scelerisque \nlectus sodales rhoncus.',
-                            style: TextStyle(
-                              fontFamily: 'CH',
-                              color: Color(0xff2A2A2A),
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextReveal(
-                                maxHeight: 80,
-                                controller: controller,
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(150, 50),
-                                    backgroundColor: AppColors.darkColor,
-                                  ),
-                                  child: const Text(
-                                    'Get Started',
-                                    style: TextStyle(
-                                      fontFamily: 'CH',
-                                      fontSize: 13,
-                                      color: AppColors.secondaryColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                )),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            TextReveal(
-                                maxHeight: 80,
-                                controller: controller,
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                      fixedSize: const Size(150, 50),
-                                      backgroundColor: AppColors.secondaryColor,
-                                      side: const BorderSide(
-                                          color: AppColors.darkColor)),
-                                  child: const Text(
-                                    'Learn more',
-                                    style: TextStyle(
-                                      fontFamily: 'CH',
-                                      fontSize: 13,
-                                      color: AppColors.darkColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        )
-                      ],
+                  const SizedBox(height: 30),
+                  FadeTransition(
+                    opacity: headingTextOpacity,
+                    child: AngleroText(
+                      '직접 촬영한 소중한 영상소스를 더 다양한 작품에서 만나볼 수 있도록\n앵글로의 파트너가 되어주세요.\n앵글로는 국내 유일 <em>영상소스 배급 서비스</em>를 통해 국내 영상제작자들을 연결하고 싶습니다.',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: AngleroColor.black, fontSize: 24, fontWeight: FontWeight.w300, height: 1.8),
+                      emStyle: const TextStyle(color: AngleroColor.black, fontSize: 24, fontWeight: FontWeight.w600, height: 1.8),
                     ),
                   ),
-                ),
-                AnimatedPositioned(
-                  curve: Curves.easeInCubic,
-                  top: (state.scrollOffsetValue > 3600) ? 10 : 300,
-                  right: (state.scrollOffsetValue > 3600) ? 250 : 200,
-                  duration: const Duration(milliseconds: 900),
-                  child: Image.asset(
-                    'assets/images/earth1.png',
-                    height: 100,
+                  const SizedBox(
+                    height: 120,
                   ),
-                ),
-                AnimatedPositioned(
-                  curve: Curves.easeInOutQuart,
-                  top: (state.scrollOffsetValue > 3700) ? 200 : 10,
-                  right: (state.scrollOffsetValue > 3700) ? 100 : 20,
-                  duration: const Duration(milliseconds: 1300),
-                  child: Image.asset(
-                    'assets/images/earth2.png',
-                    height: 100,
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                            4,
+                                (index) => Row(
+                              children: [
+                                if(index == 0)...[
+                                  const SizedBox(
+                                    width: 40,
+                                  ),
+                                ],
+                                ScaleTransition(
+                                  scale: planAnimation,
+                                  child: Image.asset(
+                                    'assets/images/section7_${index + 1}.png',
+                                    width: 270,
+                                    height: 270,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 40,
+                                ),
+                              ],
+                            )),
+                      )),
+                  const SizedBox(
+                    height: 120,
                   ),
-                ),
-                AnimatedPositioned(
-                  curve: Curves.easeOutCirc,
-                  bottom: (state.scrollOffsetValue > 3700) ? 240 : 0,
-                  left: (state.scrollOffsetValue > 3700) ? 100 : 250,
-                  duration: const Duration(milliseconds: 1300),
-                  child: Image.asset(
-                    'assets/images/earth3.png',
-                    height: 100,
+
+                  FadeTransition(
+                    opacity: subTextOpacity,
+                    child: const Text(
+                      '앵글로는 모든 영상을 수집하고, 가공/유통합니다',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w300, height: 1.4),
+                    ),
                   ),
-                ),
-                AnimatedPositioned(
-                  curve: Curves.easeOutCirc,
-                  bottom: (state.scrollOffsetValue > 3730) ? 0 : 0,
-                  left: (state.scrollOffsetValue > 3730) ? 80 : 0,
-                  duration: const Duration(milliseconds: 1600),
-                  child: Image.asset(
-                    'assets/images/earth4.png',
-                    height: 100,
+                  const SizedBox(
+                    height: 120,
                   ),
-                )
-              ],
-            );
-          },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ScaleTransition(
+                        scale: planAnimation,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              '회사소개서',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500, height: 1.8),
+                            ),
+                            const SizedBox(height:  20),
+                            Image.asset(
+                              'assets/images/paper.png',
+                              width: 80,
+                              height: 80,
+                            ),
+                            const SizedBox(height:  20),
+                            GestureDetector(
+                              onTap: (){
+
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black),
+                                  color: Colors.transparent
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'DOWNLOAD',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Image.asset(
+                                      'assets/images/download.png',
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width:  200),
+                      ScaleTransition(
+                        scale: planAnimation,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              '파트너 제안서',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500, height: 1.8),
+                            ),
+                            const SizedBox(height:  20),
+                            Image.asset(
+                              'assets/images/deal.png',
+                              width: 80,
+                              height: 80,
+                            ),
+                            const SizedBox(height:  20),
+                            GestureDetector(
+                              onTap: (){
+
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black),
+                                    color: Colors.transparent
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'DOWNLOAD',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Image.asset(
+                                      'assets/images/download.png',
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width:  200),
+                      ScaleTransition(
+                        scale: planAnimation,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              '파트너 신청',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500, height: 1.8),
+                            ),
+                            const SizedBox(height:  20),
+                            Image.asset(
+                              'assets/images/writing-tool.png',
+                              width: 80,
+                              height: 80,
+                            ),
+                            const SizedBox(height:  20),
+                            GestureDetector(
+                              onTap: (){
+
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black),
+                                    color: Colors.transparent
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'GO TO LINK',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Image.asset(
+                                      'assets/images/arrow-top-right.png',
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 150,
+                  ),
+                ],
+              )
+            ],
+          ),
         );
       },
     );

@@ -11,8 +11,7 @@ class EighthSection extends StatefulWidget {
   State<EighthSection> createState() => _EighthSectionState();
 }
 
-class _EighthSectionState extends State<EighthSection>
-    with SingleTickerProviderStateMixin {
+class _EighthSectionState extends State<EighthSection> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> imageRevealAnimation;
   late Animation<double> textRevealAnimation;
@@ -34,35 +33,16 @@ class _EighthSectionState extends State<EighthSection>
       ),
     );
 
-    imageRevealAnimation = Tween<double>(begin: 500.0, end: 0.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.0, 0.40, curve: Curves.easeOut)));
+    imageRevealAnimation = Tween<double>(begin: 500.0, end: 0.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.0, 0.40, curve: Curves.easeOut)));
 
-    textRevealAnimation = Tween<double>(begin: 70.0, end: 0.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
+    textRevealAnimation = Tween<double>(begin: 70.0, end: 0.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
 
-    textRevealEndAnimation = Tween<double>(begin: 0.0, end: 100.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
-    subTextOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.50, 0.80, curve: Curves.easeOut)));
-    offsetImage =
-        Tween<Offset>(begin: const Offset(-1, 0), end: const Offset(0, 0))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
-    transform =
-        Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+    textRevealEndAnimation = Tween<double>(begin: 0.0, end: 100.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
+    subTextOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.50, 0.80, curve: Curves.easeOut)));
+    offsetImage = Tween<Offset>(begin: const Offset(-1, 0), end: const Offset(0, 0)).animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+    transform = Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0)).animate(CurvedAnimation(parent: controller, curve: Curves.ease));
 
-    subImageRevealAnimation = Tween<double>(begin: 0.0, end: 90.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.70, 1.0, curve: Curves.easeOut)));
+    subImageRevealAnimation = Tween<double>(begin: 0.0, end: 90.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.70, 1.0, curve: Curves.easeOut)));
 
     super.initState();
   }
@@ -78,115 +58,72 @@ class _EighthSectionState extends State<EighthSection>
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 3500 &&
-                current.scrollOffsetValue < 4400) ||
-            controller.isAnimating) {
+        if ((current.scrollOffsetValue > 3500 && current.scrollOffsetValue < 4400) || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 3750 &&
-            state.scrollOffsetValue <= 4400) {
+        if (state.scrollOffsetValue >= 3750 && state.scrollOffsetValue <= 4400) {
           controller.forward();
         } else {
-          controller.reverse();
+          // controller.reverse();
         }
-        return Stack(
+        return Column(
           children: [
             Container(
-              height: 400,
+              height: 150,
             ),
-            AnimatedPositioned(
-              curve: Curves.easeOutCubic,
-              top: state.scrollOffsetValue > 4050 ? 100 : 5,
-              left: state.scrollOffsetValue > 4050 ? 200 : 0,
-              duration: const Duration(milliseconds: 1300),
-              child: AnimatedScale(
-                scale: state.scrollOffsetValue > 4000 ? 1 : 0.5,
-                duration: const Duration(milliseconds: 1300),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                          color: AppColors.secondaryColor,
-                          blurRadius: 30,
-                          blurStyle: BlurStyle.outer)
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(200),
-                    child: Image.asset(
-                      'assets/images/profile.jpg',
-                      height: 300,
-                    ),
-                  ),
-                ),
+            AnimatedOpacity(
+              curve: Curves.easeInCubic,
+              opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
+              duration: const Duration(milliseconds: 2000),
+              child: const Text(
+                '국내 유일 영상소스 배급 서비스',
+                style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700),
               ),
             ),
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 1400),
-              right: state.scrollOffsetValue > 4050
-                  ? MediaQuery.of(context).size.width * 0.29
-                  : 0,
-              top: state.scrollOffsetValue > 4050 ? 120 : 5,
-              child: Visibility(
-                visible: state.scrollOffsetValue > 4050,
-                child: TextReveal(
-                  maxHeight: 100,
-                  controller: controller,
-                  child: const Text(
-                    'Amirmahdi Nourkazemi',
-                    style: TextStyle(
-                      fontFamily: 'CH',
-                      fontSize: 25,
-                      color: AppColors.secondaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+            Container(
+              height: 30,
             ),
-            Positioned(
-              left: MediaQuery.of(context).size.width * 0.5,
-              top: 160,
-              child: AnimatedOpacity(
+            AnimatedOpacity(
                 curve: Curves.easeInCubic,
                 opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
                 duration: const Duration(milliseconds: 2000),
-                child: const Text(
-                  'Flutter developer',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'CH',
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                ),
+                child: Image.asset(
+                  'assets/images/Frame 19.png',
+                  height: 89,
+                )),
+            const SizedBox(
+              height: 60,
+            ),
+            AnimatedOpacity(
+              curve: Curves.easeInCubic,
+              opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
+              duration: const Duration(milliseconds: 2000),
+              child: const Text(
+                '영상소스를 얻기 위해 소요됐던 수많은 시간들,\n이제 소스를 구하는 걱정 없이 ‘영상 콘텐츠의 퀄리티’에만 집중하세요',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w300, height: 1.5),
               ),
             ),
-            Positioned(
-              left: MediaQuery.of(context).size.width * 0.50,
-              top: 200,
-              child: AnimatedOpacity(
-                curve: Curves.easeInCubic,
-                opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
-                duration: const Duration(milliseconds: 2000),
-                child: const SizedBox(
-                  // width: 400,
-                  child: Text(
-                    'Enthusiastic Flutter developer dedicated to creating top-notch apps and web \nsolutions. Skilled in Flutter web for smooth web application development, \nwith a talent for crafting efficient admin panels. \nRecognized for working collaboratively and solving challenges effectively \nwithin a team environment.',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'CH',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                ),
+            const SizedBox(
+              height: 60,
+            ),
+            AnimatedOpacity(
+              curve: Curves.easeInCubic,
+              opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
+              duration: const Duration(milliseconds: 2000),
+              child: const Text(
+              '앵글로는 더 효율적이고, 더 완벽한 국내 영상 산업을 꿈꿉니다',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 44, fontWeight: FontWeight.w700, height: 1.5),
               ),
-            )
+            ),
+            Container(
+              height: 150,
+            ),
           ],
         );
       },

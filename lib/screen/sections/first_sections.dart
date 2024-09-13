@@ -1,5 +1,7 @@
 import 'package:crypto_ui_web/constant/color.dart';
 import 'package:crypto_ui_web/screen/widget/text_transform.dart';
+import 'package:crypto_ui_web/share/anglero_design.dart';
+import 'package:crypto_ui_web/share/utils.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/text_reveal.dart';
@@ -25,9 +27,9 @@ class _FirstSectionState extends State<FirstSection>
       duration: const Duration(
         milliseconds: 1700,
       ),
-      reverseDuration: const Duration(
-        milliseconds: 375,
-      ),
+      // reverseDuration: const Duration(
+      //   milliseconds: 375,
+      // ),
     );
 
     textRevealAnimation = Tween<double>(begin: 60.0, end: 0.0).animate(
@@ -54,110 +56,84 @@ class _FirstSectionState extends State<FirstSection>
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 800,
+      height: 900,
       decoration: const BoxDecoration(color: AppColors.scaffoldColor),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 90, top: 200),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextReveal(
-                    maxHeight: 100,
-                    controller: controller,
-                    textOpacityAnimation: textOpacityAnimation,
-                    textRevealAnimation: textRevealAnimation,
-                    child: const Text(
-                      'Trusted Crypto',
-                      style: TextStyle(
-                          fontFamily: 'CH',
-                          fontSize: 45,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800),
-                    ),
-                  ),
-                  TextReveal(
-                    maxHeight: 100,
-                    controller: controller,
-                    textOpacityAnimation: textOpacityAnimation,
-                    textRevealAnimation: textRevealAnimation,
-                    child: const Text(
-                      'Preservation',
-                      style: TextStyle(
-                          fontFamily: 'CH',
-                          fontSize: 45,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextTransform(
-                    maxHeight: 100,
-                    controller: controller,
-                    textOpacityAnimation: textOpacityAnimation,
-                    //textRevealAnimation: textRevealAnimation,
-                    child: const Text(
-                      'Lorem ipsum dolor sit amet consectetur. Duis morbi scelerisque lectus sodales rhoncus.',
-                      style: TextStyle(
-                          fontFamily: 'CH',
-                          fontSize: 13,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w200),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(150, 50),
-                            backgroundColor: AppColors.secondaryColor),
-                        child: const Text(
-                          'Get Started',
-                          style: TextStyle(
-                            fontFamily: 'CH',
-                            fontSize: 13,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(150, 50),
-                            backgroundColor: Colors.transparent,
-                            side: const BorderSide(
-                                color: AppColors.secondaryColor)),
-                        child: const Text(
-                          'Learn more',
-                          style: TextStyle(
-                            fontFamily: 'CH',
-                            fontSize: 13,
-                            color: AppColors.secondaryColor,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
+          TextReveal(
+            maxHeight: 100,
+            controller: controller,
+            textOpacityAnimation: textOpacityAnimation,
+            textRevealAnimation: textRevealAnimation,
+            child: const Text(
+              '효율적인 영상 제작을 위한',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 60,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+          TextReveal(
+            maxHeight: 100,
+            controller: controller,
+            textOpacityAnimation: textOpacityAnimation,
+            textRevealAnimation: textRevealAnimation,
+            child: AngleroText(
+              '국내 유일 영상소스 배급, <em>앵글로</em>입니다.',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 60,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700),
+                emStyle: const TextStyle(
+                    fontSize: 60,
+                    color: AngleroColor.red_200,
+                    fontWeight: FontWeight.w700)
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          TextTransform(
+            maxHeight: 100,
+            controller: controller,
+            textOpacityAnimation: textOpacityAnimation,
+            //textRevealAnimation: textRevealAnimation,
+            child: AngleroText(
+              '앵글로는 <em>지역별로 수집, 분류한 국내 영상 콘텐츠</em>를 기반으로\n영상소스가 필요한 이들에게 맞춤 솔루션을 제공합니다. ',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300),
+              emStyle: const TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: AngleroColor.white,
+            ),
+            child: const Text(
+              '무료로 상담하기',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                height: 1,
               ),
             ),
           ),
-          const Expanded(flex: 9, child: FirstPageImage())
         ],
       ),
     );

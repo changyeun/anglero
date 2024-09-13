@@ -20,9 +20,9 @@ class _SecondScreenState extends State<SecondScreen>
       duration: const Duration(
         milliseconds: 1000,
       ),
-      reverseDuration: const Duration(
-        milliseconds: 375,
-      ),
+      // reverseDuration: const Duration(
+      //   milliseconds: 375,
+      // ),
     );
     super.initState();
   }
@@ -68,7 +68,7 @@ class _SecondScreenState extends State<SecondScreen>
                 controller.forward();
               } else {
                 // print('inside reverse:${state.scrollOffsetValue}');
-                controller.reverse();
+                // controller.reverse();
               }
               return const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemCard extends StatefulWidget {
   final String image;
-  final String title;
-  final String subtitle;
+  final double scrollMin;
+  final double scrollMax;
   const ItemCard(
       {required this.image,
-      required this.subtitle,
-      required this.title,
+        required this.scrollMin,
+        required this.scrollMax,
       super.key});
 
   @override
@@ -78,8 +78,8 @@ class _ItemCardState extends State<ItemCard>
       width: 400,
       child: BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
-          if ((current.scrollOffsetValue >= 2000 &&
-                  current.scrollOffsetValue <= 2950) ||
+          if ((current.scrollOffsetValue >= widget.scrollMin &&
+                  current.scrollOffsetValue <= widget.scrollMax) ||
               controller.isAnimating) {
             return true;
           } else {
@@ -87,74 +87,36 @@ class _ItemCardState extends State<ItemCard>
           }
         },
         builder: (context, state) {
-          if (state.scrollOffsetValue >= (2400)) {
+          if (state.scrollOffsetValue >= (widget.scrollMin)) {
             controller.forward();
-          } else {
-            controller.reverse();
           }
+          // else {
+          //   controller.reverse();
+          // }
           return AnimatedBuilder(
               animation: imageOpacity,
               builder: (context, child) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 230.0,
-                      width: 230.0,
-                      child: Center(
-                        child: FadeTransition(
-                          opacity: imageOpacity,
-                          child: SizedBox(
-                            height: imageReveal.value,
-                            width: imageReveal.value,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.network(
-                                widget.image,
-                                fit: BoxFit.cover,
-                                filterQuality: FilterQuality.medium,
-                                scale: 0.5,
-                              ),
-                            ),
+                return SizedBox(
+                  height: 488.0,
+                  width: 488.0,
+                  child: Center(
+                    child: FadeTransition(
+                      opacity: imageOpacity,
+                      child: SizedBox(
+                        height: 488.0,
+                        width: 488.0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Image.network(
+                            widget.image,
+                            fit: BoxFit.cover,
+                            filterQuality: FilterQuality.medium,
+                            scale: 0.5,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Flexible(
-                        child: Column(
-                      children: [
-                        FadeTransition(
-                          opacity: headingTextOpacity,
-                          child: Text(
-                            widget.title,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'CH',
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        FadeTransition(
-                          opacity: descriptionOpacity,
-                          child: Text(
-                            widget.subtitle,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontFamily: 'CH',
-                              fontSize: 15,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                        )
-                      ],
-                    ))
-                  ],
+                  ),
                 );
               });
         },

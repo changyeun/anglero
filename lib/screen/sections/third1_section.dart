@@ -6,14 +6,14 @@ import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ThirdSection extends StatefulWidget {
-  const ThirdSection({super.key});
+class Third1Section extends StatefulWidget {
+  const Third1Section({super.key});
 
   @override
-  State<ThirdSection> createState() => _ThirdSectionState();
+  State<Third1Section> createState() => _Third1SectionState();
 }
 
-class _ThirdSectionState extends State<ThirdSection> with SingleTickerProviderStateMixin {
+class _Third1SectionState extends State<Third1Section> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> imageRevealAnimation;
   late Animation<double> textRevealAnimation;
@@ -77,14 +77,14 @@ class _ThirdSectionState extends State<ThirdSection> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 1000 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 1800 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 1000) {
+        if (state.scrollOffsetValue > 1800) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -97,6 +97,17 @@ class _ThirdSectionState extends State<ThirdSection> with SingleTickerProviderSt
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const Flexible(
+                    flex: 1,
+                    child: ItemCard(
+                      image: 'assets/images/section2_2.png',
+                        scrollMin: 2000,
+                        scrollMax: 2500
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.15,
+                  ),
                   Flexible(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,10 +132,10 @@ class _ThirdSectionState extends State<ThirdSection> with SingleTickerProviderSt
                             child: const Text(
                               '필요한 영상 소스 혹은\n그에 맞는 솔루션을\n제안드려요',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 44,
-                                fontWeight: FontWeight.w700,
-                                height: 1.3
+                                  color: Colors.white,
+                                  fontSize: 44,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.3
                               ),
                             ),
                           ),
@@ -136,26 +147,15 @@ class _ThirdSectionState extends State<ThirdSection> with SingleTickerProviderSt
                             child: const Text(
                               '지역별로 활동하는 협력 프로덕션들의\n콘텐츠 DB를 바탕으로\n필요한 영상에 맞는 솔루션을 제공합니다.',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
                                   height: 1.8
                               ),
                             ),
                           )
                         ],
                       )),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.15,
-                  ),
-                  const Flexible(
-                    flex: 1,
-                    child: ItemCard(
-                      image: 'assets/images/section2_1.png',
-                      scrollMin: 1500,
-                      scrollMax: 2000
-                    ),
-                  ),
                 ],
               ),
             ],

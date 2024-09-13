@@ -2,6 +2,8 @@ import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
 import 'package:crypto_ui_web/screen/widget/plan_item.dart';
 import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
+import 'package:crypto_ui_web/share/anglero_design.dart';
+import 'package:crypto_ui_web/share/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,8 +14,7 @@ class FifthSection extends StatefulWidget {
   State<FifthSection> createState() => _FifthSectionState();
 }
 
-class _FifthSectionState extends State<FifthSection>
-    with TickerProviderStateMixin {
+class _FifthSectionState extends State<FifthSection> with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> imageRevealAnimation;
   late Animation<double> textRevealAnimation;
@@ -34,29 +35,15 @@ class _FifthSectionState extends State<FifthSection>
       ),
     );
 
-    imageRevealAnimation = Tween<double>(begin: 500.0, end: 0.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.0, 0.40, curve: Curves.easeOut)));
+    imageRevealAnimation = Tween<double>(begin: 500.0, end: 0.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.0, 0.40, curve: Curves.easeOut)));
 
-    textRevealAnimation = Tween<double>(begin: 70.0, end: 0.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
+    textRevealAnimation = Tween<double>(begin: 70.0, end: 0.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
 
-    planAnimation = Tween<double>(begin: 0.0, end: 1.0)
-        .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
-    offsetImage =
-        Tween<Offset>(begin: const Offset(-1, 0), end: const Offset(0, 0))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
-    transform =
-        Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0))
-            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+    planAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
+    offsetImage = Tween<Offset>(begin: const Offset(-1, 0), end: const Offset(0, 0)).animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+    transform = Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0)).animate(CurvedAnimation(parent: controller, curve: Curves.ease));
 
-    subImageRevealAnimation = Tween<double>(begin: 0.0, end: 90.0).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.70, 1.0, curve: Curves.easeOut)));
+    subImageRevealAnimation = Tween<double>(begin: 0.0, end: 90.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.70, 1.0, curve: Curves.easeOut)));
 
     super.initState();
   }
@@ -72,9 +59,7 @@ class _FifthSectionState extends State<FifthSection>
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue >= 1800 &&
-                current.scrollOffsetValue <= 3400) ||
-            controller.isAnimating) {
+        if ((current.scrollOffsetValue >= 1800 && current.scrollOffsetValue <= 3400) || controller.isAnimating) {
           return true;
         } else {
           return false;
@@ -86,114 +71,101 @@ class _FifthSectionState extends State<FifthSection>
           //print(state.scrollOffsetValue);
           controller.forward();
         } else {
-          controller.reverse();
+          // controller.reverse();
         }
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        return Column(
           children: [
-            Expanded(
-              child: AnimatedBuilder(
-                animation: textRevealAnimation,
-                builder: (context, child) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 90),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextReveal(
-                          maxHeight: 200,
-                          controller: controller,
-                          child: const Text(
-                            'PRICE',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'CH',
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.secondaryColor,
-                            ),
-                          ),
-                        ),
-                        TextReveal(
-                          maxHeight: 70,
-                          controller: controller,
-                          child: const Text(
-                            'Flexible Pricing ',
-                            style: TextStyle(
-                              fontSize: 38,
-                              fontFamily: 'CH',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        TextReveal(
-                          maxHeight: 70,
-                          controller: controller,
-                          child: const Text(
-                            'for Every Project',
-                            style: TextStyle(
-                              fontSize: 38,
-                              fontFamily: 'CH',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        TextReveal(
-                          maxHeight: 50,
-                          controller: controller,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(150, 50),
-                                backgroundColor: Colors.transparent,
-                                side: const BorderSide(
-                                    color: AppColors.secondaryColor)),
+            const SizedBox(height: 150),
+            AnimatedBuilder(
+              animation: textRevealAnimation,
+              builder: (context, child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 90),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextReveal(
+                            maxHeight: 100,
+                            controller: controller,
                             child: const Text(
-                              'Learn more',
+                              '최신 콘텐츠',
                               style: TextStyle(
-                                fontFamily: 'CH',
-                                fontSize: 13,
-                                color: AppColors.secondaryColor,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: AngleroColor.red_200,
                               ),
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
+                          const SizedBox(height: 20),
+                          TextReveal(
+                            maxHeight: 200,
+                            controller: controller,
+                            child: const Text(
+                              '편집 마감에 쫓기지 않도록\n국내에서 촬영된 전문적인 영상을\n빠르게 제공받으세요',
+                              style: TextStyle(
+                                fontSize: 44,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                      ),
+                      Column(
+                        children: [
+                          const SizedBox(height: 40),
+                          TextReveal(
+                            maxHeight: 50,
+                            controller: controller,
+                            child: AngleroText(
+                              '<em>단일 클립부터 장기 프로젝트</em>까지 앵글로에게 맡겨주세요\n(단일 클립 기준 평균 2~3일 소요)',
+                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+                              emStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-            Expanded(
-              child: Row(
-                children: [
-                  planCard(
-                    planAnimation,
-                    Colors.white,
-                    AppColors.scaffoldColor,
-                    AppColors.secondaryColor,
-                    'Basic Edition',
-                    '\$600 / prj',
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  planCard(
-                      planAnimation,
-                      Colors.black,
-                      AppColors.secondaryColor,
-                      AppColors.scaffoldColor,
-                      'Enterprise Edition',
-                      '\$1000 / prj'),
-                ],
-              ),
-            )
+            const SizedBox(height: 150),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                      6,
+                      (index) => Row(
+                            children: [
+                              if(index == 0)...[
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                              ],
+                              ScaleTransition(
+                                scale: planAnimation,
+                                child: Image.asset(
+                                  'assets/images/section5_${index + 1}.png',
+                                  width: 374,
+                                  height: 374,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                            ],
+                          )),
+                )),
+            const SizedBox(height: 150),
           ],
         );
       },
