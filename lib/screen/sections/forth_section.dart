@@ -5,6 +5,7 @@ import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
 import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:html' as html;
 
 class ForthSection extends StatefulWidget {
   const ForthSection({super.key});
@@ -96,16 +97,24 @@ class _ForthSectionState extends State<ForthSection> with SingleTickerProviderSt
                   ),
                   FadeTransition(
                     opacity: descriptionOpacity,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
-                      decoration: BoxDecoration(
-                        color: AngleroColor.red_200,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        '무료로 상담하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500, height: 1.5),
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: (){
+                          html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
+                          decoration: BoxDecoration(
+                            color: AngleroColor.red_200,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Text(
+                            '무료로 상담하기',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500, height: 1.5),
+                          ),
+                        ),
                       ),
                     ),
                   ),

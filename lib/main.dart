@@ -4,7 +4,7 @@ import 'package:crypto_ui_web/screen/whole_screen.dart';
 import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'dart:html' as html;
 
 void main() {
   runApp(const MyApp());
@@ -43,31 +43,47 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: AngleroColor.appbarColor,
         leading: Padding(
           padding: const EdgeInsets.only(left: 10, top: 21, bottom: 21),
-          child: SizedBox(
-            height: 57,
-            child: Image.asset(
-              'assets/images/Frame 19.png',
-              fit: BoxFit.contain,
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: (){
+                html.window.location.href = '/';
+              },
+              child: SizedBox(
+                height: 57,
+                child: Image.asset(
+                  'assets/images/Frame 19.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
           ),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 70),
-            child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11.5),
-              decoration: BoxDecoration(
-                color: AngleroColor.red_200,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Text(
-                'Stock 바로가기',
-                style: TextStyle(
-                    fontSize: 14,
-                    color: AngleroColor.white,
-                    height: 1,
-                    fontWeight: FontWeight.w500),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () async{
+                  html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11.5),
+                  decoration: BoxDecoration(
+                    color: AngleroColor.red_200,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    '문의하기',
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: AngleroColor.white,
+                        height: 1,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
               ),
             ),
           )

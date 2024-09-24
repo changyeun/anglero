@@ -1,6 +1,7 @@
 import 'package:crypto_ui_web/constant/color.dart';
 import 'package:crypto_ui_web/share/utils.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 class NinthSection extends StatefulWidget {
   const NinthSection({super.key});
@@ -34,23 +35,57 @@ class _NinthSectionState extends State<NinthSection> {
                     const SizedBox(
                       height: 30,
                     ),
-                    const Text(
-                      '이용약관     개인정보처리방침',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
-                    )
+                    Row(
+                      children: [
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: (){
+                              html.window.location.href = 'https://anglero.notion.site/10617cecd77980ebad3bf01d9897604a?pvs=4';
+                            },
+                            child: const Text(
+                              '이용약관',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 30),
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: (){
+                              html.window.location.href = 'http://anglero.notion.site';
+                            },
+                            child: const Text(
+                              '개인정보처리방침',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ],
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Image.asset(
-                      'assets/images/insta.png',
-                      width: 20,
-                      height: 20,
+                    GestureDetector(
+                      onTap: (){
+                        html.window.location.href = 'https://www.instagram.com/anglero.kr/';
+                      },
+                      child: Image.asset(
+                        'assets/images/insta.png',
+                        width: 20,
+                        height: 20,
+                      ),
                     ),
                     const SizedBox(
                       height: 10,

@@ -6,6 +6,7 @@ import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:crypto_ui_web/share/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:html' as html;
 
 class SeventhSection extends StatefulWidget {
   const SeventhSection({super.key});
@@ -157,34 +158,37 @@ class _SeventhSectionState extends State<SeventhSection> with SingleTickerProvid
                               height: 80,
                             ),
                             const SizedBox(height:  20),
-                            GestureDetector(
-                              onTap: (){
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: (){
+                                  html.window.location.href = 'https://anglero.notion.site/10617cecd77980dd9802e8ef44aad5e4?pvs=4';
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black),
+                                    color: Colors.transparent
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'DOWNLOAD',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Image.asset(
+                                        'assets/images/download.png',
+                                        width: 24,
+                                        height: 24,
+                                      ),
+                                    ],
+                                  ),
 
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black),
-                                  color: Colors.transparent
                                 ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'DOWNLOAD',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Image.asset(
-                                      'assets/images/download.png',
-                                      width: 24,
-                                      height: 24,
-                                    ),
-                                  ],
-                                ),
-
                               ),
                             )
                           ],
@@ -208,34 +212,37 @@ class _SeventhSectionState extends State<SeventhSection> with SingleTickerProvid
                               height: 80,
                             ),
                             const SizedBox(height:  20),
-                            GestureDetector(
-                              onTap: (){
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: (){
+                                  html.window.location.href = 'https://anglero.notion.site/10617cecd779803d828cfdd966834136?pvs=4';
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(color: Colors.black),
+                                      color: Colors.transparent
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'DOWNLOAD',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Image.asset(
+                                        'assets/images/download.png',
+                                        width: 24,
+                                        height: 24,
+                                      ),
+                                    ],
+                                  ),
 
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.black),
-                                    color: Colors.transparent
                                 ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'DOWNLOAD',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Image.asset(
-                                      'assets/images/download.png',
-                                      width: 24,
-                                      height: 24,
-                                    ),
-                                  ],
-                                ),
-
                               ),
                             )
                           ],
@@ -259,34 +266,37 @@ class _SeventhSectionState extends State<SeventhSection> with SingleTickerProvid
                               height: 80,
                             ),
                             const SizedBox(height:  20),
-                            GestureDetector(
-                              onTap: (){
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: (){
+                                  html.window.location.href = 'https://forms.gle/bRwj6sCoE3unY4gJA';
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(color: Colors.black),
+                                      color: Colors.transparent
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'GO TO LINK',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Image.asset(
+                                        'assets/images/arrow-top-right.png',
+                                        width: 24,
+                                        height: 24,
+                                      ),
+                                    ],
+                                  ),
 
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.black),
-                                    color: Colors.transparent
                                 ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'GO TO LINK',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500, height: 1.8),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Image.asset(
-                                      'assets/images/arrow-top-right.png',
-                                      width: 24,
-                                      height: 24,
-                                    ),
-                                  ],
-                                ),
-
                               ),
                             )
                           ],

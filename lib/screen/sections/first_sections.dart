@@ -3,6 +3,7 @@ import 'package:crypto_ui_web/screen/widget/text_transform.dart';
 import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:crypto_ui_web/share/utils.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 import '../widget/text_reveal.dart';
 
@@ -118,19 +119,27 @@ class _FirstSectionState extends State<FirstSection>
           const SizedBox(
             height: 30,
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: AngleroColor.white,
-            ),
-            child: const Text(
-              '무료로 상담하기',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-                height: 1,
+          GestureDetector(
+            onTap: (){
+              html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AngleroColor.white,
+                ),
+                child: const Text(
+                  '무료로 상담하기',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    height: 1,
+                  ),
+                ),
               ),
             ),
           ),
