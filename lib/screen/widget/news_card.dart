@@ -265,7 +265,6 @@ class _NewsCardState extends State<NewsCard>
                       widget.news.title,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontFamily: 'CH',
                         fontSize: 15,
                         fontWeight: FontWeight.normal,
                       ),
@@ -282,7 +281,6 @@ class _NewsCardState extends State<NewsCard>
                         widget.news.description,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontFamily: 'CH',
                           fontSize: 12,
                           fontWeight: FontWeight.w200,
                         ),
@@ -301,7 +299,6 @@ class _NewsCardState extends State<NewsCard>
                           'Nov. 28, 2023',
                           style: TextStyle(
                             color: Colors.white,
-                            fontFamily: 'CH',
                             fontSize: 12,
                             fontWeight: FontWeight.w200,
                           ),
@@ -313,7 +310,6 @@ class _NewsCardState extends State<NewsCard>
                           'See more',
                           style: TextStyle(
                             color: AppColors.secondaryColor,
-                            fontFamily: 'CH',
                             fontSize: 12,
                             fontWeight: FontWeight.w200,
                           ),

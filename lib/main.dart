@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Anglero',
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: "Pretendard"
       ),
       home: const MyHomePage(),
     );
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: 100,
         leadingWidth: 420,
         backgroundColor: AngleroColor.appbarColor,
         leading: Padding(

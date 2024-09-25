@@ -77,14 +77,17 @@ class _NinthSectionState extends State<NinthSection> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    GestureDetector(
-                      onTap: (){
-                        html.window.location.href = 'https://www.instagram.com/anglero.kr/';
-                      },
-                      child: Image.asset(
-                        'assets/images/insta.png',
-                        width: 20,
-                        height: 20,
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: (){
+                          html.window.location.href = 'https://www.instagram.com/anglero.kr/';
+                        },
+                        child: Image.asset(
+                          'assets/images/insta.png',
+                          width: 20,
+                          height: 20,
+                        ),
                       ),
                     ),
                     const SizedBox(

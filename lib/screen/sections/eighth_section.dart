@@ -58,14 +58,14 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 3500 && current.scrollOffsetValue < 4400) || controller.isAnimating) {
+        if (current.scrollOffsetValue > 7000 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 3750 && state.scrollOffsetValue <= 4400) {
+        if (state.scrollOffsetValue > 7000) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -77,8 +77,8 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
               curve: Curves.easeInCubic,
-              opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
-              duration: const Duration(milliseconds: 2000),
+              opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+              duration: const Duration(milliseconds: 500),
               child: const Text(
                 '국내 유일 영상소스 배급 서비스',
                 style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700),
@@ -89,8 +89,8 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
                 curve: Curves.easeInCubic,
-                opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
-                duration: const Duration(milliseconds: 2000),
+                opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+                duration: const Duration(milliseconds: 500),
                 child: Image.asset(
                   'assets/images/Frame 19.png',
                   height: 89,
@@ -100,8 +100,8 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
               curve: Curves.easeInCubic,
-              opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
-              duration: const Duration(milliseconds: 2000),
+              opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+              duration: const Duration(milliseconds: 500),
               child: const Text(
                 '영상소스를 얻기 위해 소요됐던 수많은 시간들,\n이제 소스를 구하는 걱정 없이 ‘영상 콘텐츠의 퀄리티’에만 집중하세요',
                 textAlign: TextAlign.center,
@@ -113,8 +113,8 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
               curve: Curves.easeInCubic,
-              opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
-              duration: const Duration(milliseconds: 2000),
+              opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+              duration: const Duration(milliseconds: 500),
               child: const Text(
               '앵글로는 더 효율적이고, 더 완벽한 국내 영상 산업을 꿈꿉니다',
               textAlign: TextAlign.center,

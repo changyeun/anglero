@@ -52,14 +52,14 @@ class _SixthSectionState extends State<SixthSection> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 4200 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 4500 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 4200) {
+        if (state.scrollOffsetValue > 4500) {
           controller.forward();
         } else {
           // controller.reverse();

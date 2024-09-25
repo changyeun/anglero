@@ -83,7 +83,7 @@ class _FirstSectionState extends State<FirstSection>
             textOpacityAnimation: textOpacityAnimation,
             textRevealAnimation: textRevealAnimation,
             child: AngleroText(
-              '국내 유일 영상소스 배급, <em>앵글로</em>입니다.',
+              '국내 유일 영상소스 유통, <em>앵글로</em>입니다.',
               textAlign: TextAlign.center,
               style: const TextStyle(
                   fontSize: 60,
@@ -221,7 +221,7 @@ class _FirstPageImageState extends State<FirstPageImage>
       child: Transform.scale(
         scale: 1,
         child: Image.asset(
-          'assets/images/Frame 27.png',
+          'assets/images/img_main_background.png',
           fit: BoxFit.cover,
         ),
       ),

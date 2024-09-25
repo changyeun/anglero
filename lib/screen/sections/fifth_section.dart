@@ -59,7 +59,7 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue >= 1800 && current.scrollOffsetValue <= 3400) || controller.isAnimating) {
+        if ((current.scrollOffsetValue >= 3000 && current.scrollOffsetValue <= 3800) || controller.isAnimating) {
           return true;
         } else {
           return false;
@@ -67,7 +67,7 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
       },
       builder: (context, state) {
         //print(state.scrollOffsetValue);
-        if (state.scrollOffsetValue > 3200.0) {
+        if (state.scrollOffsetValue > 3500.0) {
           //print(state.scrollOffsetValue);
           controller.forward();
         } else {

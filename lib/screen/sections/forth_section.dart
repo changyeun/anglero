@@ -52,14 +52,14 @@ class _ForthSectionState extends State<ForthSection> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 3000 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 2900 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 3000) {
+        if (state.scrollOffsetValue > 2900) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -89,7 +89,7 @@ class _ForthSectionState extends State<ForthSection> with SingleTickerProviderSt
                     child: const Text(
                       '앵글로는 영상소스 제공 뿐만 아니라 편집과 색보정, 트렌스코딩까지\n영상 제작에 필요한 모든 절차를 체계적이고 합리적으로 제안합니다.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600, height: 1.5),
+                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500, height: 1.5),
                     ),
                   ),
                   const SizedBox(

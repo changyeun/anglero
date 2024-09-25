@@ -77,14 +77,14 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 2600 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 2500 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 2600) {
+        if (state.scrollOffsetValue > 2500) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -104,7 +104,7 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                           FadeTransition(
                             opacity: headingTextOpacity,
                             child: const Text(
-                              '소스 제공 및 컨설팅',
+                              '유지 및 관리',
                               style: TextStyle(
                                   color: AngleroColor.red_200,
                                   fontSize: 14,
@@ -119,7 +119,7 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                           FadeTransition(
                             opacity: headingTextOpacity,
                             child: const Text(
-                              '필요한 영상 소스 혹은\n그에 맞는 솔루션을\n제안드려요',
+                              '영상 소스를 지속 관리하고\n권리 사후 처리를\n도와드려요',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 44,
@@ -134,7 +134,7 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                           FadeTransition(
                             opacity: descriptionOpacity,
                             child: const Text(
-                              '지역별로 활동하는 협력 프로덕션들의\n콘텐츠 DB를 바탕으로\n필요한 영상에 맞는 솔루션을 제공합니다.',
+                              '드라이브를 통해 영상소스를\n지속 관리하고 영상 사용 권리에 관한\n사후 처리를 지원합니다.',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 14,

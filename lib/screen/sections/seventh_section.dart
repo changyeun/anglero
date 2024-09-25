@@ -55,14 +55,14 @@ class _SeventhSectionState extends State<SeventhSection> with SingleTickerProvid
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 4200 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 5500 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 4200) {
+        if (state.scrollOffsetValue > 5500) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -130,7 +130,7 @@ class _SeventhSectionState extends State<SeventhSection> with SingleTickerProvid
                   FadeTransition(
                     opacity: subTextOpacity,
                     child: const Text(
-                      '앵글로는 모든 영상을 수집하고, 가공/유통합니다',
+                      '앵글로는 산업에 필요한\n모든 영상을 수집하고, 가공/유통합니다',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w300, height: 1.4),
                     ),

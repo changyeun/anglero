@@ -77,14 +77,14 @@ class _ThirdSectionState extends State<ThirdSection> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 1000 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 1300 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 1000) {
+        if (state.scrollOffsetValue > 1300) {
           controller.forward();
         } else {
           // controller.reverse();
