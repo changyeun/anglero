@@ -103,11 +103,11 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                         children: [
                           FadeTransition(
                             opacity: headingTextOpacity,
-                            child: const Text(
+                            child: Text(
                               '유지 및 관리',
                               style: TextStyle(
                                   color: AngleroColor.red_200,
-                                  fontSize: 14,
+                                  fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                   fontWeight: FontWeight.w600,
                                   height: 1
                               ),
@@ -118,11 +118,11 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                           ),
                           FadeTransition(
                             opacity: headingTextOpacity,
-                            child: const Text(
+                            child: Text(
                               '영상 소스를 지속 관리하고\n권리 사후 처리를\n도와드려요',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 44,
+                                  fontSize: 44* (MediaQuery.of(context).size.width /1728),
                                   fontWeight: FontWeight.w700,
                                   height: 1.3
                               ),
@@ -133,11 +133,11 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                           ),
                           FadeTransition(
                             opacity: descriptionOpacity,
-                            child: const Text(
+                            child: Text(
                               '드라이브를 통해 영상소스를\n지속 관리하고 영상 사용 권리에 관한\n사후 처리를 지원합니다.',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                   fontWeight: FontWeight.w500,
                                   height: 1.8
                               ),
@@ -149,7 +149,7 @@ class _Third2SectionState extends State<Third2Section> with SingleTickerProvider
                     width: MediaQuery.of(context).size.width * 0.15,
                   ),
                   const Flexible(
-                    flex: 1,
+                    // flex: 1,
                     child: ItemCard(
                       image: 'assets/images/section2_3.png',
                         scrollMin: 2500,

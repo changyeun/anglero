@@ -107,7 +107,7 @@ class _ImageRevealState extends State<ImageReveal>
                   scale: imageScale,
                   child: Image.asset(
                     widget.image,
-                    width: 200,
+                    width: 200* (MediaQuery.of(context).size.width /1728),
                   ),
                 );
               },

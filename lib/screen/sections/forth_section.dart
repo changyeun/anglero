@@ -75,10 +75,11 @@ class _ForthSectionState extends State<ForthSection> with SingleTickerProviderSt
                 children: [
                   FadeTransition(
                     opacity: headingTextOpacity,
-                    child: const Text(
+                    child: Text(
                       '영상소스의 수급과 관리\n후가공까지 모두 한 번에',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: AngleroColor.white, fontSize: 60, fontWeight: FontWeight.w500, height: 1.3),
+                      style: TextStyle(color: AngleroColor.white,
+                          fontSize: 60 * (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w500, height: 1.3),
                     ),
                   ),
                   const SizedBox(
@@ -86,10 +87,11 @@ class _ForthSectionState extends State<ForthSection> with SingleTickerProviderSt
                   ),
                   FadeTransition(
                     opacity: headingTextOpacity,
-                    child: const Text(
+                    child: Text(
                       '앵글로는 영상소스 제공 뿐만 아니라 편집과 색보정, 트렌스코딩까지\n영상 제작에 필요한 모든 절차를 체계적이고 합리적으로 제안합니다.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500, height: 1.5),
+                      style: TextStyle(color: Colors.white,
+                          fontSize: 14 * (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w500, height: 1.5),
                     ),
                   ),
                   const SizedBox(
@@ -104,15 +106,16 @@ class _ForthSectionState extends State<ForthSection> with SingleTickerProviderSt
                           html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
+                          padding: EdgeInsets.symmetric(horizontal: 56* (MediaQuery.of(context).size.width /1728), vertical: 16* (MediaQuery.of(context).size.width /1728)),
                           decoration: BoxDecoration(
                             color: AngleroColor.red_200,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Text(
+                          child: Text(
                             '무료로 상담하기',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500, height: 1.5),
+                            style: TextStyle(color: Colors.white,
+                                fontSize: 24 * (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w500, height: 1.5),
                           ),
                         ),
                       ),

@@ -40,10 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        leadingWidth: 420,
+        leadingWidth: 430 * (MediaQuery.of(context).size.width /1728),
         backgroundColor: AngleroColor.appbarColor,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 10, top: 21, bottom: 21),
+          padding: EdgeInsets.only(left: 10 * (MediaQuery.of(context).size.width /1728) , top: 21, bottom: 21),
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 70),
+            padding: EdgeInsets.only(right: 70 * (MediaQuery.of(context).size.width /1728)),
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(

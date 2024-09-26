@@ -98,7 +98,7 @@ class _Third1SectionState extends State<Third1Section> with SingleTickerProvider
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Flexible(
-                    flex: 1,
+                    // flex: 1,
                     child: ItemCard(
                       image: 'assets/images/section2_2.png',
                         scrollMin: 2200,
@@ -114,11 +114,11 @@ class _Third1SectionState extends State<Third1Section> with SingleTickerProvider
                         children: [
                           FadeTransition(
                             opacity: headingTextOpacity,
-                            child: const Text(
+                            child: Text(
                               '편집 및 후가공 서비스',
                               style: TextStyle(
                                   color: AngleroColor.red_200,
-                                  fontSize: 14,
+                                  fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                   fontWeight: FontWeight.w600,
                                   height: 1
                               ),
@@ -129,11 +129,11 @@ class _Third1SectionState extends State<Third1Section> with SingleTickerProvider
                           ),
                           FadeTransition(
                             opacity: headingTextOpacity,
-                            child: const Text(
+                            child: Text(
                               '컷 편집 부터\n트랜스코딩 까지\n다양한 후가공 서비스를\n지원해드려요',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 44,
+                                  fontSize: 44* (MediaQuery.of(context).size.width /1728),
                                   fontWeight: FontWeight.w700,
                                   height: 1.3
                               ),
@@ -144,11 +144,11 @@ class _Third1SectionState extends State<Third1Section> with SingleTickerProvider
                           ),
                           FadeTransition(
                             opacity: descriptionOpacity,
-                            child: const Text(
+                            child: Text(
                               '원하는 영상에 바로 사용할 수 있도록,\n컷편집부터 색보정, 트렌스코딩 등\n모든 후가공 서비스를 제공합니다.',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                   fontWeight: FontWeight.w500,
                                   height: 1.8
                               ),

@@ -80,7 +80,7 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
               animation: textRevealAnimation,
               builder: (context, child) {
                 return Padding(
-                  padding: const EdgeInsets.only(left: 90),
+                  padding: EdgeInsets.only(left: 90* (MediaQuery.of(context).size.width /1728)),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -92,10 +92,10 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
                           TextReveal(
                             maxHeight: 100,
                             controller: controller,
-                            child: const Text(
+                            child: Text(
                               '최신 콘텐츠',
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                 fontWeight: FontWeight.w600,
                                 color: AngleroColor.red_200,
                               ),
@@ -105,10 +105,10 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
                           TextReveal(
                             maxHeight: 200,
                             controller: controller,
-                            child: const Text(
+                            child: Text(
                               '편집 마감에 쫓기지 않도록\n국내에서 촬영된 전문적인 영상을\n빠르게 제공받으세요',
                               style: TextStyle(
-                                fontSize: 44,
+                                fontSize: 44 * (MediaQuery.of(context).size.width /1728),
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                               ),
@@ -127,8 +127,8 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
                             controller: controller,
                             child: AngleroText(
                               '<em>단일 클립부터 장기 프로젝트</em>까지 앵글로에게 맡겨주세요\n(단일 클립 기준 평균 2~3일 소요)',
-                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
-                              emStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
+                              style: TextStyle(fontSize: 14* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w500, color: Colors.white),
+                              emStyle: TextStyle(fontSize: 14* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w700, color: Colors.white),
                             ),
                           ),
                         ],
@@ -155,8 +155,8 @@ class _FifthSectionState extends State<FifthSection> with TickerProviderStateMix
                                 scale: planAnimation,
                                 child: Image.asset(
                                   'assets/images/section5_${index + 1}.png',
-                                  width: 374,
-                                  height: 374,
+                                  width: 374* (MediaQuery.of(context).size.width /1728),
+                                  height: 374* (MediaQuery.of(context).size.width /1728),
                                 ),
                               ),
                               const SizedBox(

@@ -50,16 +50,17 @@ class _SixthSectionState extends State<SixthSection> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    int aniHeight = MediaQuery.of(context).size.width< 1000 ? 4000: 4500;
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 4500 || controller.isAnimating) {
+        if (current.scrollOffsetValue > aniHeight || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 4500) {
+        if (state.scrollOffsetValue > aniHeight) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -76,15 +77,15 @@ class _SixthSectionState extends State<SixthSection> with SingleTickerProviderSt
                   FadeTransition(
                     opacity: headingTextOpacity,
                     child: Image.asset(
-                      'assets/images/section6_title.png', height: 89,)
+                      'assets/images/section6_title.png', height: 89* (MediaQuery.of(context).size.width /1728),)
                   ),
                   const SizedBox(height: 60),
                   FadeTransition(
                     opacity: headingTextOpacity,
-                    child: const Text(
+                    child: Text(
                       '오직 국내 영상 제작자를 위해 태어났습니다.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: AngleroColor.white, fontSize: 44, fontWeight: FontWeight.w700, height: 1.3),
+                      style: TextStyle(color: AngleroColor.white, fontSize: 44* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w700, height: 1.3),
                     ),
                   ),
                   const SizedBox(
@@ -92,10 +93,10 @@ class _SixthSectionState extends State<SixthSection> with SingleTickerProviderSt
                   ),
                   FadeTransition(
                     opacity: headingTextOpacity,
-                    child: const Text(
+                    child: Text(
                       '앵글로는 지역별로 수집, 분류한 국내 영상소스를\n개별 영상소스 공급 계약과 영상소스 스톡 사이트를 통해 영상소스를 제공합니다.\n지역별 키워드 분류와 필터 시스템으로 더 빠르고, 효율적으로 영상을 다운로드하세요',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w300, height: 1.8),
+                      style: TextStyle(color: Colors.white, fontSize: 24* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w300, height: 1.8),
                     ),
                   ),
                   const SizedBox(
@@ -103,10 +104,10 @@ class _SixthSectionState extends State<SixthSection> with SingleTickerProviderSt
                   ),
                   FadeTransition(
                     opacity: subTextOpacity,
-                    child: const Text(
+                    child: Text(
                       'Coming Soon !',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: AngleroColor.red_200, fontSize: 24, fontWeight: FontWeight.w700, height: 1.8),
+                      style: TextStyle(color: AngleroColor.red_200, fontSize: 24* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w700, height: 1.8),
                     ),
                   ),
                   const SizedBox(
@@ -118,18 +119,18 @@ class _SixthSectionState extends State<SixthSection> with SingleTickerProviderSt
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: (){
-                          html.window.location.href = 'www.anglero.kr';
+                          html.window.location.href = 'https://www.anglero.kr';
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 30.5, vertical: 16),
+                          padding: EdgeInsets.symmetric(horizontal: 30.5* (MediaQuery.of(context).size.width /1728), vertical: 16* (MediaQuery.of(context).size.width /1728)),
                           decoration: BoxDecoration(
                             color: AngleroColor.red_200,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Text(
+                          child: Text(
                             'Footage 둘러보기',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w600, height: 1.5),
+                            style: TextStyle(color: Colors.white, fontSize: 24* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w600, height: 1.5),
                           ),
                         ),
                       ),

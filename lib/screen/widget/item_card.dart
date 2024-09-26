@@ -97,17 +97,17 @@ class _ItemCardState extends State<ItemCard>
               animation: imageOpacity,
               builder: (context, child) {
                 return SizedBox(
-                  height: 488.0,
-                  width: 488.0,
+                  height: 488.0* (MediaQuery.of(context).size.width /1728),
+                  width: 488.0* (MediaQuery.of(context).size.width /1728),
                   child: Center(
                     child: FadeTransition(
                       opacity: imageOpacity,
                       child: SizedBox(
-                        height: 488.0,
-                        width: 488.0,
+                        height: 488.0* (MediaQuery.of(context).size.width /1728),
+                        width: 488.0* (MediaQuery.of(context).size.width /1728),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
+                          child: Image.asset(
                             widget.image,
                             fit: BoxFit.cover,
                             filterQuality: FilterQuality.medium,

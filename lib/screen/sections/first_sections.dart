@@ -42,7 +42,7 @@ class _FirstSectionState extends State<FirstSection>
         CurvedAnimation(
             parent: controller,
             curve: const Interval(0.0, 0.3, curve: Curves.easeOut)));
-    Future.delayed(const Duration(milliseconds: 1000), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       controller.forward();
     });
   }
@@ -59,88 +59,100 @@ class _FirstSectionState extends State<FirstSection>
     return Container(
       height: 900,
       decoration: const BoxDecoration(color: AppColors.scaffoldColor),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
         children: [
-          TextReveal(
-            maxHeight: 100,
-            controller: controller,
-            textOpacityAnimation: textOpacityAnimation,
-            textRevealAnimation: textRevealAnimation,
-            child: const Text(
-              '효율적인 영상 제작을 위한',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 60,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700),
-            ),
+          Center(
+            child: Image.asset(
+                'assets/images/img_main_background.png',
+                fit: BoxFit.cover,
+              ),
           ),
-          TextReveal(
-            maxHeight: 100,
-            controller: controller,
-            textOpacityAnimation: textOpacityAnimation,
-            textRevealAnimation: textRevealAnimation,
-            child: AngleroText(
-              '국내 유일 영상소스 유통, <em>앵글로</em>입니다.',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 60,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700),
-                emStyle: const TextStyle(
-                    fontSize: 60,
-                    color: AngleroColor.red_200,
-                    fontWeight: FontWeight.w700)
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          TextTransform(
-            maxHeight: 100,
-            controller: controller,
-            textOpacityAnimation: textOpacityAnimation,
-            //textRevealAnimation: textRevealAnimation,
-            child: AngleroText(
-              '앵글로는 <em>지역별로 수집, 분류한 국내 영상 콘텐츠</em>를 기반으로\n영상소스가 필요한 이들에게 맞춤 솔루션을 제공합니다. ',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300),
-              emStyle: const TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600),
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          GestureDetector(
-            onTap: (){
-              html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
-            },
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: AngleroColor.white,
-                ),
-                child: const Text(
-                  '무료로 상담하기',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    height: 1,
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextReveal(
+                  maxHeight: 100,
+                  controller: controller,
+                  textOpacityAnimation: textOpacityAnimation,
+                  textRevealAnimation: textRevealAnimation,
+                  child: Text(
+                    '효율적인 영상 제작을 위한',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 60 * (MediaQuery.of(context).size.width /1728),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
-              ),
+                TextReveal(
+                  maxHeight: 100,
+                  controller: controller,
+                  textOpacityAnimation: textOpacityAnimation,
+                  textRevealAnimation: textRevealAnimation,
+                  child: AngleroText(
+                    '국내 유일 영상소스 유통, <em>앵글로</em>입니다.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 60 * (MediaQuery.of(context).size.width /1728),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700),
+                      emStyle: TextStyle(
+                          fontSize: 60 * (MediaQuery.of(context).size.width /1728),
+                          color: AngleroColor.red_200,
+                          fontWeight: FontWeight.w700)
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextTransform(
+                  maxHeight: 100,
+                  controller: controller,
+                  textOpacityAnimation: textOpacityAnimation,
+                  textRevealAnimation: textRevealAnimation,
+                  child: AngleroText(
+                    '앵글로는 <em>지역별로 수집, 분류한 국내 영상 콘텐츠</em>를 기반으로\n영상소스가 필요한 이들에게 맞춤 솔루션을 제공합니다. ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 24 * (MediaQuery.of(context).size.width /1728),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300),
+                    emStyle: TextStyle(
+                        fontSize: 24 * (MediaQuery.of(context).size.width /1728),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: (){
+                    html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AngleroColor.white,
+                      ),
+                      child: Text(
+                        '무료로 상담하기',
+                        style: TextStyle(
+                          fontSize: 24 * (MediaQuery.of(context).size.width /1728),
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          height: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -199,32 +211,32 @@ class _FirstPageImageState extends State<FirstPageImage>
               width: double.infinity,
               child: child,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: _animation.value,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppColors.scaffoldColor,
-                      AppColors.secondaryColor,
-                    ],
-                    tileMode: TileMode.mirror,
-                  ),
-                ),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.bottomCenter,
+            //   child: Container(
+            //     height: _animation.value,
+            //     width: double.infinity,
+            //     decoration: const BoxDecoration(
+            //       gradient: LinearGradient(
+            //         colors: [
+            //           AppColors.scaffoldColor,
+            //           AppColors.secondaryColor,
+            //         ],
+            //         tileMode: TileMode.mirror,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         );
       },
-      child: Transform.scale(
-        scale: 1,
-        child: Image.asset(
-          'assets/images/img_main_background.png',
-          fit: BoxFit.cover,
-        ),
-      ),
+      // child: Transform.scale(
+      //   scale: 1,
+      //   child: Image.asset(
+      //     'assets/images/img_main_background.png',
+      //     fit: BoxFit.cover,
+      //   ),
+      // ),
     );
   }
 }

@@ -30,7 +30,7 @@ class _NinthSectionState extends State<NinthSection> {
                   children: [
                     Image.asset(
                       'assets/images/Frame 19.png',
-                      height: 40,
+                      height: 40* (MediaQuery.of(context).size.width /1728),
                     ),
                     const SizedBox(
                       height: 30,
@@ -43,27 +43,27 @@ class _NinthSectionState extends State<NinthSection> {
                             onTap: (){
                               html.window.location.href = 'https://anglero.notion.site/10617cecd77980ebad3bf01d9897604a?pvs=4';
                             },
-                            child: const Text(
+                            child: Text(
                               '이용약관',
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white,
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 30),
+                        SizedBox(width: 30* (MediaQuery.of(context).size.width /1728)),
                         MouseRegion(
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
                             onTap: (){
                               html.window.location.href = 'http://anglero.notion.site';
                             },
-                            child: const Text(
+                            child: Text(
                               '개인정보처리방침',
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 14* (MediaQuery.of(context).size.width /1728),
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white,
                               ),
@@ -85,19 +85,19 @@ class _NinthSectionState extends State<NinthSection> {
                         },
                         child: Image.asset(
                           'assets/images/insta.png',
-                          width: 20,
-                          height: 20,
+                          width: 20* (MediaQuery.of(context).size.width /1728),
+                          height: 20* (MediaQuery.of(context).size.width /1728),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       '서울특별시 광진구 능동로 120,(화양동, 건국대학교) KU혁신기술관 601호\n제주특별자치도 제주시 원남6길 58(도남동), 2층 201호',
                       textAlign: TextAlign.end,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14* (MediaQuery.of(context).size.width /1728),
                         fontWeight: FontWeight.w300,
                         color: Colors.white,
                         height: 1.4
@@ -108,14 +108,14 @@ class _NinthSectionState extends State<NinthSection> {
                     ),
                     AngleroText(
                       '<em>CEO</em>  박경진   |   <em>E</em>  contact@anglero.kr   |   <em>P</em>  010-7303-2419   |   <em>사업자 등록번호</em>  536-10-02317',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14,
+                        fontSize: 14* (MediaQuery.of(context).size.width /1728),
                         color: Colors.white,
                       ),
-                      emStyle: const TextStyle(
+                      emStyle: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 14,
+                        fontSize: 14* (MediaQuery.of(context).size.width /1728),
                         color: Colors.white,
                       ),
                     ),

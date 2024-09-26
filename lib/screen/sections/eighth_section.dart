@@ -56,16 +56,17 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+    int aniHeight = MediaQuery.of(context).size.width< 1000 ? 5500: 7000;
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 7000 || controller.isAnimating) {
+        if (current.scrollOffsetValue > aniHeight || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 7000) {
+        if (state.scrollOffsetValue > aniHeight) {
           controller.forward();
         } else {
           // controller.reverse();
@@ -77,11 +78,11 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
               curve: Curves.easeInCubic,
-              opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+              opacity: state.scrollOffsetValue > aniHeight ? 1 : 0,
               duration: const Duration(milliseconds: 500),
-              child: const Text(
+              child: Text(
                 '국내 유일 영상소스 배급 서비스',
-                style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700),
+                style: TextStyle(color: Colors.white, fontSize: 24* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -89,23 +90,23 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
                 curve: Curves.easeInCubic,
-                opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+                opacity: state.scrollOffsetValue > aniHeight ? 1 : 0,
                 duration: const Duration(milliseconds: 500),
                 child: Image.asset(
                   'assets/images/Frame 19.png',
-                  height: 89,
+                  height: 89* (MediaQuery.of(context).size.width /1728),
                 )),
             const SizedBox(
               height: 60,
             ),
             AnimatedOpacity(
               curve: Curves.easeInCubic,
-              opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+              opacity: state.scrollOffsetValue > aniHeight ? 1 : 0,
               duration: const Duration(milliseconds: 500),
-              child: const Text(
+              child: Text(
                 '영상소스를 얻기 위해 소요됐던 수많은 시간들,\n이제 소스를 구하는 걱정 없이 ‘영상 콘텐츠의 퀄리티’에만 집중하세요',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w300, height: 1.5),
+                style: TextStyle(color: Colors.white, fontSize: 24* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w300, height: 1.5),
               ),
             ),
             const SizedBox(
@@ -113,12 +114,12 @@ class _EighthSectionState extends State<EighthSection> with SingleTickerProvider
             ),
             AnimatedOpacity(
               curve: Curves.easeInCubic,
-              opacity: state.scrollOffsetValue > 7000 ? 1 : 0.1,
+              opacity: state.scrollOffsetValue > aniHeight ? 1 : 0.1,
               duration: const Duration(milliseconds: 500),
-              child: const Text(
+              child: Text(
               '앵글로는 더 효율적이고, 더 완벽한 국내 영상 산업을 꿈꿉니다',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 44, fontWeight: FontWeight.w700, height: 1.5),
+              style: TextStyle(color: Colors.white, fontSize: 44* (MediaQuery.of(context).size.width /1728), fontWeight: FontWeight.w700, height: 1.5),
               ),
             ),
             Container(
