@@ -8,3 +8,7 @@ class AngleroColor {
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
   static const Color red_200 = Color.fromRGBO(214, 6, 28, 1);
 }
+class AngleroConst{
+  static ScrollController scrollController =  ScrollController();
+
+}

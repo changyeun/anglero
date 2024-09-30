@@ -7,6 +7,7 @@ import 'package:crypto_ui_web/screen/sections/seventh_section.dart';
 import 'package:crypto_ui_web/screen/sections/third1_section.dart';
 import 'package:crypto_ui_web/screen/sections/third2_section.dart';
 import 'package:crypto_ui_web/screen/sections/third_section.dart';
+import 'package:crypto_ui_web/share/anglero_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,14 +23,12 @@ class WholeScreen extends StatefulWidget {
 }
 
 class _WholeScreenState extends State<WholeScreen> {
-  late ScrollController controller;
+
   @override
   void initState() {
-    controller = ScrollController();
-
-    controller.addListener(() {
+    AngleroConst.scrollController.addListener(() {
       context.read<DisplayOffset>().changeDisplayOffset(
-          (MediaQuery.of(context).size.height + controller.position.pixels)
+          (MediaQuery.of(context).size.height + AngleroConst.scrollController.position.pixels)
               .toInt());
     });
     super.initState();
@@ -38,7 +37,7 @@ class _WholeScreenState extends State<WholeScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      controller: controller,
+      controller: AngleroConst.scrollController,
       children: const [
         FirstSection(),
         // SecondScreen(),

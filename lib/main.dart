@@ -18,10 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Anglero',
-      theme: ThemeData(
-        useMaterial3: true,
-        fontFamily: "Pretendard"
-      ),
+      theme: ThemeData(useMaterial3: true, fontFamily: "Pretendard"),
       home: const MyHomePage(),
     );
   }
@@ -40,14 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        leadingWidth: 430 * (MediaQuery.of(context).size.width /1728),
+        leadingWidth: 430 * (MediaQuery.of(context).size.width / 1728),
         backgroundColor: AngleroColor.appbarColor,
         leading: Padding(
-          padding: EdgeInsets.only(left: 10 * (MediaQuery.of(context).size.width /1728) , top: 21, bottom: 21),
+          padding: EdgeInsets.only(left: 10 * (MediaQuery.of(context).size.width / 1728), top: 21, bottom: 21),
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 html.window.location.href = '/';
               },
               child: SizedBox(
@@ -62,29 +59,79 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 70 * (MediaQuery.of(context).size.width /1728)),
+            padding: EdgeInsets.only(right: 70 * (MediaQuery.of(context).size.width / 1728)),
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                onTap: () async{
-                  html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
-                },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8),
-                  padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11.5),
-                  decoration: BoxDecoration(
-                    color: AngleroColor.red_200,
-                    borderRadius: BorderRadius.circular(10),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      AngleroConst.scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.linearToEaseOut);
+                    },
+                    child: Text(
+                      'HOME',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width < 1000 ? (18 * (MediaQuery.of(context).size.width / 1000)) : (18 * (MediaQuery.of(context).size.width / 1728)),
+                          color: AngleroColor.white, height: 1, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                  child: const Text(
-                    '문의하기',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: AngleroColor.white,
-                        height: 1,
-                        fontWeight: FontWeight.w500),
+                  SizedBox(width: 25 * (MediaQuery.of(context).size.width / 1728)),
+                  GestureDetector(
+                    onTap: () async {
+                      AngleroConst.scrollController.animateTo(1000, duration: const Duration(milliseconds: 300), curve: Curves.linearToEaseOut);
+                    },
+                    child: Text(
+                      'Service',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width < 1000 ? (18 * (MediaQuery.of(context).size.width / 1000)) : (18 * (MediaQuery.of(context).size.width / 1728)),
+                          color: AngleroColor.white, height: 1, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                ),
+                  SizedBox(width: 25 * (MediaQuery.of(context).size.width / 1728)),
+                  GestureDetector(
+                    onTap: () async {
+                      html.window.location.href = 'https://www.anglero.kr/';
+                    },
+                    child: Text(
+                      'Footage',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width < 1000 ? (18 * (MediaQuery.of(context).size.width / 1000)) : (18 * (MediaQuery.of(context).size.width / 1728)),
+                          color: AngleroColor.white, height: 1, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  SizedBox(width: 25 * (MediaQuery.of(context).size.width / 1728)),
+                  GestureDetector(
+                    onTap: () {
+                      AngleroConst.scrollController.animateTo(MediaQuery.of(context).size.width < 1000 ? 4200 : 5000, duration: const Duration(milliseconds: 300), curve: Curves.linearToEaseOut);
+                    },
+                    child: Text(
+                      'Partner',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width < 1000 ? (18 * (MediaQuery.of(context).size.width / 1000)) : (18 * (MediaQuery.of(context).size.width / 1728)),
+                          color: AngleroColor.white,
+                          height: 1,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  SizedBox(width: 46 * (MediaQuery.of(context).size.width / 1728)),
+                  GestureDetector(
+                    onTap: () async {
+                      html.window.location.href = 'https://forms.gle/vTyZVssswqn8kcY49';
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11.5),
+                      decoration: BoxDecoration(
+                        color: AngleroColor.red_200,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Text(
+                        '문의하기',
+                        style: TextStyle(fontSize: 14, color: AngleroColor.white, height: 1, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           )

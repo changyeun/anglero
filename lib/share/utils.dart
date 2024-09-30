@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' as service;
 import 'package:styled_text/styled_text.dart';
 
+
 class AngleroText extends StatelessWidget {
   AngleroText(this.text,
       {Key? key,
